@@ -1,4 +1,4 @@
-namespace WEBAPP_SAMPLE.Models  // Replace hyphen with an underscore
+namespace webapp_sample.Models  // Replace hyphen with an underscore
 {
     public class Customer
     {

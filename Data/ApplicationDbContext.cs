@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace WEBAPP_SAMPLE.Data  // Corrected namespace
+namespace webapp_sample.Data  // Corrected namespace
 {
     public class ApplicationDbContext : DbContext
     {

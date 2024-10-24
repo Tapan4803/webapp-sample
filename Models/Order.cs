@@ -1,4 +1,4 @@
-namespace WEBAPP_SAMPLE.Models
+namespace webapp_sample.Models
 {
     public class Order
     {
