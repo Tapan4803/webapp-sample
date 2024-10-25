@@ -20,6 +20,13 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+builder.Services.AddControllersWithViews();  // This will work after installing the package
+
+// Add the DbContext with SQL Server connection string
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
