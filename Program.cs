@@ -27,6 +27,11 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// Default route to the User controller
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=User}/{action=Index}/{id?}"); 
+
 app.MapRazorPages();
 
 app.Run();
