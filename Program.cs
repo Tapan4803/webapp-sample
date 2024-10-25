@@ -1,37 +1,32 @@
-using Microsoft.EntityFrameworkCore;
-using webapp_sample.Data;
+using Microsoft.EntityFrameworkCore; // Add this using directive
+using webapp_sample.Data; // Ensure this matches your namespace where ApplicationDbContext is defined
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews(); 
+builder.Services.AddRazorPages();
 
 // Add the DbContext with SQL Server connection string
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); // Make sure DefaultConnection is defined in appsettings.json
 
 var app = builder.Build();
-Console.WriteLine("Connection to the database was successful!");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
-builder.Services.AddControllersWithViews();  // This will work after installing the package
-
-// Add the DbContext with SQL Server connection string
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 app.UseRouting();
+
 app.UseAuthorization();
 
-app.MapControllers(); // Make sure this line is present
+app.MapRazorPages();
 
 app.Run();
